@@ -1,31 +1,31 @@
-pipeline {
-    agent any
+                                       pipeline {
+                                           agent any
 
-    stages {
+                                           stages {
 
-        stage('Checkout') {
-            steps {
-                echo 'Checking out repository'
-            }
-        }
+                                               stage('Checkout') {
+                                                   steps {
+                                                       echo 'Checking out repository'
+                                                   }
+                                               }
 
-        stage('Build') {
-            steps {
-                sh 'mvn clean package'
-            }
-        }
+                                               stage('Build') {
+                                                   steps {
+                                                       sh 'mvn clean package'
+                                                   }
+                                               }
 
-        stage('Build Docker Image') {
-            steps {
-                sh 'docker build -t calculator-app .'
-            }
-        }
+                                               stage('Build Docker Image') {
+                                                   steps {
+                                                       sh 'docker build -t calculator-app .'
+                                                   }
+                                               }
 
-        stage('Run Database Container') {
-            steps {
-                sh 'docker compose up -d'
-            }
-        }
+                                               stage('Run Database Container') {
+                                                   steps {
+                                                       sh 'docker compose up -d'
+                                                   }
+                                               }
 
-    }
-}
+                                           }
+                                       }
